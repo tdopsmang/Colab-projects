@@ -22,4 +22,4 @@ jobs:
           pip install -r requirements.txt || echo "No dependencies to install"
 
       - name: Run the script
-        run: python my_script.py
+        run: python km_in_MAS_Final_with_FG_V1_0_5.ipynb
