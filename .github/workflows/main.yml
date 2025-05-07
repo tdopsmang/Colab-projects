@@ -1,0 +1,26 @@
+name: Execute Google Colab Notebook
+
+on:
+  schedule:
+    - cron: '55 14 * * *' # Runs daily at 14:30 UTC
+
+jobs:
+  run-colab-notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3 # Pulls your code from the repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8' # Specify the Python version you need
+
+      - name: Install Dependencies
+        run: pip install papermill
+
+      - name: Execute Colab Notebook
+        run: |
+          papermill .github/workflows/Colab-projects/km_in_MAS_Final_with_FG_V1_0_5.ipynb \
+          .github/workflows/Colab-projects/executed_km_in_MAS_Final_with_FG_V1_0_5.ipynb
